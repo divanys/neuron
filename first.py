@@ -15,10 +15,10 @@ class Neuron:
     return sigmoid(total)
 
 weights = np.array([0, 1]) # w1 = 0, w2 = 1
-bias = 4                   # b = 4
+bias = int(input('Введите b: '))             # b = 4
 n = Neuron(weights, bias)
 
-x = np.array([2, 3])       # x1 = 2, x2 = 3
+x = np.array([int(input('1: ')),int(input('2: ')) ])       # x1 = 2, x2 = 3
 print(n.feedforward(x))    # 0.9990889488055994
 
     
