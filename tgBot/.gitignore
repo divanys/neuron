@@ -3,4 +3,3 @@ cat .gitignore
 
 confi.py
 __pycache__
-all.norm-sz100-w10-cb0-it1-min100.w2v
