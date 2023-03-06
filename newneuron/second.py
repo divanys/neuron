@@ -120,3 +120,8 @@ print("Accuracy:", accuracy)
 import matplotlib.pyplot as plt
 plt.plot(loss_arr)
 plt.show()
+
+probs = predict(accuracy)
+pred_class = np.argmax(probs)
+class_names = ['Setosa', 'Versicolor', 'Virginica']
+print('Predicted class:', class_names[pred_class])
