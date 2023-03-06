@@ -2,4 +2,3 @@ cat .gitignore
 
 
 confi.py
-__pycache__
