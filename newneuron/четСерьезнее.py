@@ -2,6 +2,9 @@ import numpy as np
 import sys
 
 """
+Учимся обучать нейронные сети
+код взят с канала
+https://www.youtube.com/@KovalevskyiAcademy
 """
 
 
@@ -40,4 +43,45 @@ class PartyNN(object):
         error_layer_1 = weights_delta_layer_2 * self.weights_1_2
         gradient_layer_1 = outputs_1 * (1 - outputs_1)
         weights_delta_layer_1 = error_layer_1 * gradient_layer_1
-        self.weights_0_1 -= np.dot(inputs.reshape(len(inputs), 1), weights_delta_layer_1).T  * self.learning_rate
+        self.weights_0_1 -= np.dot(inputs.reshape(len(inputs), 1), weights_delta_layer_1).T * self.learning_rate
+
+
+def MSE(y, Y):
+    return np.mean((y - Y) ** 2)
+
+
+train = [
+    ([0, 0, 0], 0),
+    ([0, 0, 1], 1),
+    ([0, 1, 0], 0),
+    ([0, 1, 1], 0),
+    ([1, 0, 0], 1),
+    ([1, 0, 1], 1),
+    ([1, 1, 0], 0),
+    ([1, 1, 1], 0)
+]
+
+
+epochs = 1000
+learning_rate = 0.08
+
+network = PartyNN(learning_rate=learning_rate)
+
+for e in range(epochs):
+    inputs_ = []
+    correct_predictions = []
+    for input_stat, correct_predict in train:
+        network.train(np.array(input_stat), correct_predict)
+        inputs_.append(np.array(input_stat)), correct_predictions.append(np.array(correct_predict))
+
+    train_loss = MSE(network.predict(np.array(inputs_).T), np.array(correct_predictions))
+    sys.stdout.write("\rProgress: {}, Training loss: {}".format(str(100 * e / float(epochs))[:4], str(train_loss)[:5]))
+
+print('\n')
+for input_stat, correct_predict in train:
+    print("For input: {} the prediction is: {}, {}, expected: {}".format(
+        str(input_stat),
+        str(network.predict(np.array(input_stat)) > .5),
+        str(network.predict(np.array(input_stat))),
+        str(correct_predict == 1)))
+
