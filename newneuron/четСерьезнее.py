@@ -62,8 +62,8 @@ train = [
 ]
 
 
-epochs = 1000
-learning_rate = 0.08
+epochs = 5000
+learning_rate = 0.05
 
 network = PartyNN(learning_rate=learning_rate)
 
@@ -78,6 +78,7 @@ for e in range(epochs):
     sys.stdout.write("\rProgress: {}, Training loss: {}".format(str(100 * e / float(epochs))[:4], str(train_loss)[:5]))
 
 print('\n')
+
 for input_stat, correct_predict in train:
     print("For input: {} the prediction is: {}, {}, expected: {}".format(
         str(input_stat),
