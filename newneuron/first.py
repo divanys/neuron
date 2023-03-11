@@ -41,7 +41,7 @@ def softmax(t):
     out = np.exp(t)
     return out / np.sum(out)
 
-def predict(x):
+def predict(x): 
     t1 = x @ W1 + b1
     h1 = relu(t1)
     t2 = h1 @ W2 + b2

@@ -14,34 +14,29 @@ output_numb = 3
 pogresh = 0.5
 
 
-def xz(t):
-    out = np.exp(t)
-    return out / np.sum(out)
-
-print(xz(3))
-# def activ_fun(x):
-#     if x >= 0.5:
-#         return 1
-#     else:
-#         return 0
+def activ_fun(x):
+    if x >= 0.5:
+        return 1
+    else:
+        return 0
     
-# def new_def(f, t):
-#     if f > t:
-#         n = 1
-#     elif t >= f:
-#         n = 0
-#     return n
+def new_def(f, t):
+    if f > t:
+        n = 1
+    elif t >= f:
+        n = 0
+    return n
 
-# def dsa():
-#     f = float(input("1: "))
-#     t = float(input("2: "))
-#     if new_def(f, t) == True:
-#         nums = round(f * t + random.uniform(0, pogresh), 5)
-#     else:
-#         nums = round(f * t - random.uniform(0, pogresh), 5)
-#     return nums
-
+def dsa():
+    f = float(input("1: "))
+    t = float(input("2: "))
+    if new_def(f, t) == True:
+        nums = round(f * t + random.uniform(0, pogresh), 5)
+    else:
+        nums = round(f * t - random.uniform(0, p), 5)
+    return nums
 
     
-# if __name__ == "__main__":
-#     print(dsa())
+    
+if __name__ == "__main__":
+    print(dsa())

@@ -1,12 +1,6 @@
 import numpy as np
 import sys
-
-"""
-Учимся обучать нейронные сети
-код взят с канала
-https://www.youtube.com/@KovalevskyiAcademy
-"""
-
+import bot2 as bt
 
 class PartyNN(object):
 
@@ -50,13 +44,7 @@ def MSE(y, Y):
     return np.mean((y - Y) ** 2)
 
 
-train = [
-    ([0, 0, 0], 0),
-    ([0, 0, 1], 1),
-    ([0, 1, 0], 0),
-    ([0, 1, 1], 0),
-  
-]
+train = bt.get_djghjc()
 
 
 epochs = 5000
@@ -76,10 +64,12 @@ for e in range(epochs):
 
 print('\n')
 
+lst = []
 for input_stat, correct_predict in train:
-    print("For input: {} the prediction is: {}, {}, expected: {}".format(
+    lst.append("For input: {} the prediction is: {}, {}, expected: {}".format(
         str(input_stat),
         str(network.predict(np.array(input_stat)) > .5),
         str(network.predict(np.array(input_stat))),
         str(correct_predict == 1)))
 
+# print(lst)
